@@ -15,17 +15,15 @@ class UsersController < ApplicationController
     end
 
     def show 
-        if !logged_in?
-            redirect_to login_path
-        end 
-        @user = User.find_by_id(params[:id])
-        redirect_to '/' if !@user  
+        if_not_logged_in
+        @user = User.find_by_id(params[:id]) 
+        redirect_to '/' if !@user
     end
 
     private 
 
     def user_params
-        params.require(:user).permit(:email, :name, :password)
+        params.require(:user).permit(:name, :email, :password)
     end 
 
 end
