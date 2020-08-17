@@ -1,5 +1,5 @@
 class EssaysController < ApplicationController 
-    before_action :set_essay, only[:show, :edit, :update]
+    before_action :set_essay, only:[:show, :edit, :update]
     before_action :if_not_logged_in
 
     def new 
