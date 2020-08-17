@@ -6,4 +6,5 @@ post '/login' => 'sessions#create'
 get '/signup' => 'users#new'
 
 resources :users
+resources :essays
 end
