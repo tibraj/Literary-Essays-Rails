@@ -7,4 +7,5 @@ get '/signup' => 'users#new'
 
 resources :users
 resources :essays
+resources :books
 end
