@@ -1,5 +1,5 @@
 class EssaysController < ApplicationController 
-
+    before_action :set_essay, only[:show, :edit, :update]
     def new 
         @essay = Essay.new 
         @essay.build_book 
