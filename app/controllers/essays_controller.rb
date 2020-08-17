@@ -25,4 +25,9 @@ class EssaysController < ApplicationController
         params.require(:essay).permit(:title, :content, :book_id, book_attributes: [:title, :author])
     end
 
+    def set_essay
+        @essay = Essay.find(params[:id])
+        redirect_to essays_path if !@essay
+    end
+
 end
