@@ -8,7 +8,7 @@ class Essay < ApplicationRecord
     validates :content, presence: true 
 
     def book_attributes=(attributes)
-        self.book = Book.find_or_create_by(attributes) if !title.empty? && !author.empty?
+        self.book = Book.find_or_create_by(attributes) if !attributes['title'].empty? && !attributes['author'].empty?
         self.book
     end
 end
