@@ -21,6 +21,10 @@ class EssaysController < ApplicationController
     def show
     end 
 
+    def index
+        @essays = Essay.all
+    end
+
     private 
 
     def essay_params 
