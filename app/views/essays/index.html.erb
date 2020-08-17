@@ -1,0 +1,6 @@
+<h1>Essays</h1>
+
+<% @essays.each do |essay| %>
+    <h3><%= essay.title %></h3>
+    <p><em><%= essay.content %></p>
+<% end %>
