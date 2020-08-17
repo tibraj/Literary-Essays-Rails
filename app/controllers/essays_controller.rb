@@ -16,6 +16,9 @@ class EssaysController < ApplicationController
         end 
     end
 
+    def show
+    end 
+
     private 
 
     def essay_params 
