@@ -4,7 +4,7 @@ get '/' => 'sessions#welcome'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/signup' => 'users#new'
-
+delete '/logout' => 'sessions#destroy'
 resources :users
 resources :essays
 resources :books
