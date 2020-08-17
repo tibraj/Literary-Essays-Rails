@@ -5,6 +5,17 @@ class EssaysController < ApplicationController
         @essay.build_book 
     end 
 
+    def create
+        @essay = Essay.new(essay_params)
+        @essay.user_id = session[:user_id]
+        if @essay.save
+            redirect_to essay_path(@essay)
+        else 
+            @essay.build_book 
+            render :new 
+        end 
+    end
+
     private 
 
     def essay_params 
