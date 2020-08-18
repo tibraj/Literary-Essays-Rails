@@ -32,6 +32,14 @@ class EssaysController < ApplicationController
         end 
     end
 
+    def update 
+        if @essay.update 
+            redirect_to essay_path(@essay)
+        else 
+            render :edit 
+        end
+    end 
+    
     private 
 
     def essay_params 
