@@ -38,6 +38,13 @@ class ResponsesController < ApplicationController
         end 
     end
 
+    def update 
+        if @response.update 
+            redirect_to essay_path(@essay)
+        else render :edit 
+        end 
+    end 
+
     private
 
     def set_essay 
