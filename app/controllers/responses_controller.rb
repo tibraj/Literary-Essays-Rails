@@ -8,6 +8,15 @@ class ResponsesController < ApplicationController
         end 
     end
 
+    def create 
+        @response = current_user.responses.build(response_params)
+        if @response.save 
+            redirect_To response_path(@response)
+        else 
+            render :new 
+        end 
+    end 
+
     def index 
         if set_essay 
             @responses = @essay.responses 
