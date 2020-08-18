@@ -25,6 +25,13 @@ class EssaysController < ApplicationController
         @essays = Essay.all
     end
 
+    def edit 
+        if current_user.id == @essay.user_id 
+        else 
+            redirect_to essays_path
+        end 
+    end
+
     private 
 
     def essay_params 
