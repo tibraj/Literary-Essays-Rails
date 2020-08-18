@@ -1,2 +1,3 @@
 <%= link_to @response.essay.title, essay_path(@essay) %>
 <%= @response.content %>
+<%= link_to "Edit Response", edit_response_path(@essay) if @response.user == current_user %><br>
