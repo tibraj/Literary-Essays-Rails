@@ -8,4 +8,5 @@ delete '/logout' => 'sessions#destroy'
 resources :users
 resources :essays
 resources :books
+resouces :responses
 end
