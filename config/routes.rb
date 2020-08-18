@@ -5,8 +5,10 @@ get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/signup' => 'users#new'
 delete '/logout' => 'sessions#destroy'
+resources :essays do
+  resources :books, only: [:new, :index]
+end 
 resources :users
-resources :essays
 resources :books
 resouces :responses
 end
