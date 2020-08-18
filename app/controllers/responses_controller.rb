@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
     before_action :set_essay, only:[:show, :edit, :update, :destroy]
+    before_action :not_logged_in?
 
     def new 
         if set_essay 
