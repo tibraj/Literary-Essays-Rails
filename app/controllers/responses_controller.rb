@@ -1,6 +1,11 @@
 class ResponsesController < ApplicationController
 
     def new 
+        if set_essay 
+            @responses = @essay.responses.build
+        else 
+            @response = Response.new 
+        end 
     end
 
     private
