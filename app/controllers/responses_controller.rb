@@ -8,6 +8,15 @@ class ResponsesController < ApplicationController
         end 
     end
 
+    def index 
+        if set_essay 
+            @responses = @essay.responses 
+        else 
+            @responses = Response.all
+        end 
+    end 
+
+
     private
 
     def set_essay 
