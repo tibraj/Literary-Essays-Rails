@@ -39,7 +39,12 @@ class EssaysController < ApplicationController
             render :edit 
         end
     end 
-    
+
+    def destroy 
+        @essay.destroy
+        redirect_to user_path(@essay.user)
+    end
+
     private 
 
     def essay_params 
