@@ -1,4 +1,5 @@
 class ResponsesController < ApplicationController
+    before_action :set_essay, only:[:show, :edit, :update, :destroy]
 
     def new 
         if set_essay 
