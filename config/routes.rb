@@ -10,5 +10,5 @@ resources :essays do
 end 
 resources :users
 resources :books
-resouces :responses
+resources :responses
 end
