@@ -1,0 +1,7 @@
+<h1>All Responses</h1>
+<ul>
+    <% @responses.each do |response| %>
+        <li><%= link_to response.essay.title, essay_path(@essay) %><li>
+        <%= response.content %>
+        <p>By <%= response.user.name %>
+</ul>
