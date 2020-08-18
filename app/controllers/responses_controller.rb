@@ -40,10 +40,15 @@ class ResponsesController < ApplicationController
 
     def update 
         if @response.update 
-            redirect_to essay_path(@essay)
+            redirect_to essay_path(@response.essay)
         else render :edit 
         end 
     end 
+
+    def destroy 
+        @response.destroy 
+        redirect_to user_path(@response.user)
+    end
 
     private
 
