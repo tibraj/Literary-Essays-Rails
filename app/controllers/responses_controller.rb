@@ -31,6 +31,12 @@ class ResponsesController < ApplicationController
         @response = Response.find_by_id(params[:id])
     end 
 
+    def edit 
+        if current_user.id == @response.user_id
+        else 
+            redirect_to responses_path
+        end 
+    end
 
     private
 
