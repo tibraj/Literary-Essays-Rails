@@ -1,0 +1,8 @@
+<%= render partial: 'layouts/errors', locals: {object: @response} %>
+
+<%= form_for(@response) do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.hidden_field :essay_id %>
+    <%= f.submit %>
+<% end %>
