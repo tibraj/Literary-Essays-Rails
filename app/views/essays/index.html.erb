@@ -3,4 +3,5 @@
 <% @essays.each do |essay| %>
     <h3><%= link_to essay.title, essay_path(essay) %></h3>
     <p><em><%= essay.content %></p>
+    <h6>By:<%= essay.user.name %></h6>
 <% end %>
