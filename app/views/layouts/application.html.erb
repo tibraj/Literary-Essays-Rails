@@ -9,6 +9,17 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <% if logged_in? %>
+  <ul class="navbar">
+  <li><%= link_to "Write a new Essay", new_essay_path %></li>
+  <li><%= link_to "All Essays", essays_path %></li>
+  <li><%= link_to "All Responses", responses_path %></li>
+  <li><%= link_to "All Books", books_path %></li>
+  <li><%= link_to "Logout", logout_path, method: :delete %></li>
+  </ul>
+  <% end %>
+
+
   <body>
     <%= yield %>
   </body>
