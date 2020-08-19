@@ -1,8 +1,3 @@
 <h1>Respond to this Essay</h1>
 
-<%= form_for(@response) do |f| %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.hidden_field :essay_id %>
-    <%= f.submit %>
-<% end %>
+<%= render partial: 'form' %>
