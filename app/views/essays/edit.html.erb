@@ -1,18 +1,3 @@
 <h1>Edit Essay</h1>
 
-<%= form_for(@essay) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %><br><br>
-    <%= f.label :content %>
-    <%= f.text_area :content %><br><br>
-    <p> Select a Book this Essay Concerns: <p>
-    <%= f.collection_select :book_id, Book.all, :id, :title, include_blank: 'Select One' %>
-    <p> Or Add a New Book </p>
-    <%= f.fields_for :book do |b| %>
-        <%= b.label :title %>
-        <%= b.text_field :title %><br><br>
-        <%= b.label :author %>
-        <%= b.text_field :author %><br><br>
-    <% end %>
-<%= f.submit %>
-<% end %>
+<%= render partial: 'form' %>
