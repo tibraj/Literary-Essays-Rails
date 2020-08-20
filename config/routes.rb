@@ -4,7 +4,9 @@ get '/' => 'sessions#welcome'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/signup' => 'users#new'
+get '/auth/:provider/callback' => 'sessions#create'
 delete '/logout' => 'sessions#destroy'
+
 resources :essays do
   resources :books, only: [:new, :index]
 end 
