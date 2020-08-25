@@ -6,8 +6,8 @@ class User < ApplicationRecord
     has_secure_password
 
     def self.create_by_omniauth(auth)
-        self.find_or_create_by(name: auth[:info][:email]) do |u|
-            u.email = auth[:info][:email]
+        self.find_or_create_by(email: auth[:info][:email]) do |u|
+            u.name = auth[:info][:email]
             u.password = SecureRandom.hex
         end 
     end
