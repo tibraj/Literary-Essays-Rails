@@ -1,38 +1,29 @@
 class ResponsesController < ApplicationController
-    before_action :set_essay, only:[:show, :edit, :update, :destroy]
     before_action :if_not_logged_in
 
     def new 
-        if set_essay 
-            @responses = @essay.responses.build
-        else 
-            @response = Response.new 
-        end 
+        @response = Response.new 
     end
 
-    def create 
-        @response = current_user.responses.build(response_params)
-        if @response.save 
-            redirect_To response_path(@response)
+    def create
+        @response = Response.new(response_params)
+        @response.user_id = session[:user_id]
+        if @response.save
+            redirect_to essay_path(@response)
         else 
             render :new 
         end 
-    end 
+    end
 
     def index 
-        if set_essay 
-            @responses = @essay.responses 
-        else 
-            @responses = Response.all
-        end 
+        @responses = Response.all
     end 
 
     def show 
-        @response = Response.find_by_id(params[:id])
     end 
 
     def edit 
-        if current_user.id == @response.user_id
+        if current_user.id == @response.user_id 
         else 
             redirect_to responses_path
         end 
@@ -40,24 +31,21 @@ class ResponsesController < ApplicationController
 
     def update 
         if @response.update 
-            redirect_to essay_path(@response.essay)
-        else render :edit 
-        end 
+            redirect_to response_path(@response)
+        else 
+            render :edit 
+        end
     end 
 
     def destroy 
-        @response.destroy 
+        @response.destroy
         redirect_to user_path(@response.user)
     end
 
     private
 
-    def set_essay 
-        @essay = Essay.find_by_id(params[:essay_id])
-    end
-
     def response_params
-        params.require(:repsonse).permit(:content, :essay_id)
+        params.require(:response).permit(:content)
     end  
 
 end

@@ -7,9 +7,6 @@ class SessionsController < ApplicationController
     end
 
     def create
-        if params[:provider]
-            omniauth 
-        else
             @user = User.find_by(email: params[:user][:email])
             if @user && @user.authenticate(params[:user][:password])
                 session[:user_id] = @user.id 
@@ -18,14 +15,14 @@ class SessionsController < ApplicationController
                 flash[:error] = "Invalid Entry"
                 redirect_to login_path
             end
-        end 
     end
 
-    def omniauth 
+    def create_by_omniauth 
         @user = User.create_by_omniauth(auth)
         session[:user_id] = @user.id 
         redirect_to user_path(@user)
     end
+
 
     def destroy
         session.delete(:user_id)
