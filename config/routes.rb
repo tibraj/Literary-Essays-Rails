@@ -4,7 +4,7 @@ get '/' => 'sessions#welcome'
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 get '/signup' => 'users#new'
-get '/auth/github/callback' => 'sessions#create_by_omniauth'
+get '/auth/google_oauth2/callback' => 'sessions#create_by_omniauth'
 delete '/logout' => 'sessions#destroy'
 
 resources :essays do
