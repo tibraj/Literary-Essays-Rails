@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
     before_action :if_not_logged_in
+    before_action :set_essay
 
     def new 
         @response = Response.new 
@@ -46,6 +47,11 @@ class ResponsesController < ApplicationController
 
     def response_params
         params.require(:response).permit(:content)
-    end  
+    end 
+    
+    def set_essay
+        @essay = Essay.find(params[:id])
+        redirect_to essays_path if !@essay
+    end
 
 end
