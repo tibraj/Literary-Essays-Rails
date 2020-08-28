@@ -1,16 +1,18 @@
 class ResponsesController < ApplicationController
     before_action :if_not_logged_in
-    before_action :set_essay
 
-    def new 
-        @response = Response.new 
+    def new
+        if @essay = Essay.find_by_id(params[:essay_id]) 
+            @response = @essay.responses.build
+        else 
+            @response = Response.new
+        end 
     end
 
     def create
-        @response = Response.new(response_params)
-        @response.user_id = session[:user_id]
+        @response = current_user.responses.build(response_params)
         if @response.save
-            redirect_to essay_path(@response)
+            redirect_to response_path(@response)
         else 
             render :new 
         end 
@@ -21,6 +23,7 @@ class ResponsesController < ApplicationController
     end 
 
     def show 
+        @response = Response.find_by_id(params[:id])
     end 
 
     def edit 
@@ -46,12 +49,11 @@ class ResponsesController < ApplicationController
     private
 
     def response_params
-        params.require(:response).permit(:content)
+        params.require(:response).permit(:essay_id, :content)
     end 
     
     def set_essay
-        @essay = Essay.find(params[:id])
-        redirect_to essays_path if !@essay
+        @essay = Essay.find_by_id(params[:id])
     end
 
 end

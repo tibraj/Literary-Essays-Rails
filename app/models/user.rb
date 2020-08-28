@@ -12,3 +12,9 @@ class User < ApplicationRecord
         end 
     end
 end
+
+
+
+#<%= link_to @response.essay.title, essay_path(@essay) %>
+#<%= link_to "Edit Response", edit_response_path(@essay) if @response.user == current_user %><br>
+#<%= button_to "Delete Response", response_path(@response), method: :delete if @response.user == current_user %>
