@@ -8,7 +8,7 @@ get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 delete '/logout' => 'sessions#destroy'
 
 resources :essays do
-  resources :books, only: [:new, :index]
+  resources :responses, only: [:new, :show, :index]
 end 
 resources :users
 resources :books
