@@ -1,5 +1,6 @@
 class ResponsesController < ApplicationController
     before_action :if_not_logged_in
+    before_action :set_response, only:[:show, :edit, :update, :destroy]
 
     def new
         if @essay = Essay.find_by_id(params[:essay_id]) 
@@ -34,7 +35,7 @@ class ResponsesController < ApplicationController
     end
 
     def update 
-        if @response.update 
+        if @response.update(response_params)
             redirect_to response_path(@response)
         else 
             render :edit 
@@ -52,8 +53,8 @@ class ResponsesController < ApplicationController
         params.require(:response).permit(:essay_id, :content)
     end 
     
-    def set_essay
-        @essay = Essay.find_by_id(params[:id])
+    def set_response
+        @response = Response.find_by_id(params[:id])
     end
 
 end
