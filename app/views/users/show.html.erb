@@ -1,3 +1,16 @@
 <h1><%= @user.name%>'s Home</h1>
 
+<h2><%= @user.name%>'s Essays:</h2>
+    <% @user.essays.each do |essay|%>
+        <h3><%= essay.title %></h3>
+        <p><%= essay.content %></p>
+    <% end %>
 
+    <br><br>
+
+<h3><%= @user.name%>'s Responses:</h3>
+    <% @user.responses.each do |response|%>
+        <p><%= response.content %></p>
+        <p><strong>(Written in response to: <%= link_to response.essay.title, essay_path(response)%>)</strong></p>
+    <% end %>
+        
