@@ -7,9 +7,11 @@ get '/signup' => 'users#new'
 get '/auth/google_oauth2/callback' => 'sessions#omniauth'
 delete '/logout' => 'sessions#destroy'
 
+
 resources :essays do
   resources :responses, only: [:new, :show, :index, :edit]
 end 
+get '/recent', to: 'essays#recent', as: 'recent'
 resources :users
 resources :books
 resources :responses
