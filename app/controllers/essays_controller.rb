@@ -26,6 +26,10 @@ class EssaysController < ApplicationController
         @essays = Essay.all
     end
 
+    def recent 
+        @essays = Essay.all.recent
+    end
+
     def edit 
         if current_user.id == @essay.user_id 
         else 
