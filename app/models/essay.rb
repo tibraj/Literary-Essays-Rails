@@ -6,7 +6,7 @@ class Essay < ApplicationRecord
     accepts_nested_attributes_for :book 
     validates :title, presence: true 
     validates :content, presence: true 
-    scope :recent, lambda { where('created_at >= ?', Time.now - 1.month) }
+    scope :recent, lambda { where('created_at >= ?', Time.now - 1.week) }
 
     def book_attributes=(attributes)
         self.book = Book.find_or_create_by(attributes) if !attributes['title'].empty? && !attributes['author'].empty?
