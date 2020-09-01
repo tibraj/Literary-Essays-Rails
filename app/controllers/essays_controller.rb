@@ -19,7 +19,6 @@ class EssaysController < ApplicationController
     end
 
     def show
-        
     end 
 
     def index
