@@ -1,5 +1,5 @@
-<%= @response.essay.title %><br><br>
-<%= @response.content %><br><br>
+<h3><em>Original Essay: </em><%= @response.essay.title %><br><br></h3>
+<p>Response: <%= @response.content %><br><br></p>
 <p> Written by: <%= @response.user.name %></p>
 <%= link_to "Edit Response", edit_response_path(@response) if @response.user == current_user %><br>
 <%= button_to "Delete Response", response_path(@response), method: :delete if @response.user == current_user %>

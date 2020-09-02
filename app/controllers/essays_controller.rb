@@ -19,6 +19,9 @@ class EssaysController < ApplicationController
     end
 
     def show
+        if !set_essay  
+            redirect_to essays_path
+        end
     end 
 
     def index
@@ -37,7 +40,7 @@ class EssaysController < ApplicationController
     end
 
     def update 
-        if @essay.update 
+        if @essay.update(essay_params)
             redirect_to essay_path(@essay)
         else 
             render :edit 
@@ -45,8 +48,11 @@ class EssaysController < ApplicationController
     end 
 
     def destroy 
-        @essay.destroy
-        redirect_to user_path(@essay.user)
+        set_essay 
+        if @essay.present?
+            @essay.destroy
+            redirect_to user_path(@essay.user)
+        end
     end
 
     private 
@@ -56,8 +62,7 @@ class EssaysController < ApplicationController
     end
 
     def set_essay
-        @essay = Essay.find(params[:id])
-        redirect_to essays_path if !@essay
+        @essay = Essay.find_by_id(params[:id])
     end
 
 end

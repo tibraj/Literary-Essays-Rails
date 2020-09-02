@@ -10,15 +10,13 @@
   </head>
 
   <% if logged_in? %>
-  <ul class="navbar">
-  <li><%= link_to "Home", user_path(session[:user_id]) %></li>
-  <li><%= link_to "Write a new Essay", new_essay_path %></li>
-  <li><%= link_to "Recent Essays", recent_path %></li>
-  <li><%= link_to "All Essays", essays_path %></li>
-  <li><%= link_to "All Responses", responses_path %></li>
-  <li><%= link_to "All Books", books_path %></li>
-  <li><%= link_to "Logout", logout_path, method: :delete %></li>
-  </ul>
+  <%= link_to "Home", user_path(session[:user_id]), :class => "navbutton" %>
+  <%= link_to "Write a new Essay", new_essay_path, :class => "navbutton" %>
+  <%= link_to "Recent Essays", recent_path, :class => "navbutton" %>
+  <%= link_to "All Essays", essays_path, :class => "navbutton" %>
+  <%= link_to "All Responses", responses_path, :class => "navbutton" %>
+  <%= link_to "All Books", books_path, :class => "navbutton" %>
+  <%= link_to "Logout", logout_path, method: :delete, :class => "navbutton" %>
   <% end %>
 
 

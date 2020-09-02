@@ -4,7 +4,7 @@
 <p><em><%= @essay.content %></em</p><br>
 <%= link_to "Respond to this Essay", new_essay_response_path(@essay) %><br><br>
 <%= link_to "Edit Essay", edit_essay_path(@essay) if @essay.user == current_user %><br>
-<%= button_to "Delete Essay", essay_path(@essay), method: :delete if @essay.user == current_user %>
+<%= button_to "Delete Essay", essay_path(@essay), method: :delete if @essay.user == current_user%>
 
 <p>------------------------------------------------------------------------------</p>
 <br><br>
