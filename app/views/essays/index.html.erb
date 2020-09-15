@@ -1,7 +1,9 @@
 <h1>Essays</h1>
 
 <% @essays.each do |essay| %>
-    <h3><%= link_to essay.title, essay_path(essay) %></h3>
-    <p><em><%= essay.content %></p>
-    <h6>By:<%= essay.user.name %></h6>
+    <div class="card">
+    <h3 class="card-title"><%= link_to essay.title, essay_path(essay) %></h3>
+    <p class="card-text"><em><%= essay.content %></p>
+    <h6 class="card-subtitle">By:<%= essay.user.name %></h6>
+    </div>
 <% end %>

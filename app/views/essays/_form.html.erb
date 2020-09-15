@@ -1,18 +1,29 @@
 <%= render partial: 'layouts/errors', locals: {object: @essay} %>
 
 <%= form_for(@essay) do |f| %>
+
+    <div class="form-group">
     <%= f.label :title %>:
-    <%= f.text_field :title %><br><br>
+    <%= f.text_field :title, class: "form-control" %><br><br>
     <%= f.label :content %>:
-    <%= f.text_area :content %><br><br>
-    <p> Select a Book this Essay Concerns: <p>
-    <%= f.collection_select :book_id, Book.all, :id, :title, include_blank: 'Select One' %>
-    <p> Or Add a New Book </p>
+    <%= f.text_area :content, class: "form-control" %><br><br>
+    </div>
+
+    <div class="form-group">
+    <p> Select a Book this Essay Concerns: 
+
+    <%= f.collection_select :book_id, Book.all, :id, :title, {include_blank: 'Select One'}, {class: "form-control"} %></p>
+    
+    <p> Or Add a New Book
+
     <%= f.fields_for :book do |b| %>
-        <%= b.label :title %>:
-        <%= b.text_field :title %><br><br>
-        <%= b.label :author %>:
-        <%= b.text_field :author %><br><br>
+        <p><%= b.label :title %>:
+        <%= b.text_field :title, class: "form-control" %></p>
+        <p><%= b.label :author %>:
+        <%= b.text_field :author, class: "form-control" %></p></p>
+    </div>
+
     <% end %>
-<%= f.submit %>
+    
+    <%= f.submit 'Create Essay', :class => "btn btn-primary" %>
 <% end %>

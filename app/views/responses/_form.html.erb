@@ -1,8 +1,10 @@
 <%= render partial: 'layouts/errors', locals: {object: @response} %>
 
 <%= form_for(@response) do |f| %>
+    <div class="form-group">
     <%= f.hidden_field :essay_id %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.submit, :class => "button" %>
+    <p><%= f.label :content %>:<p>
+    <%= f.text_area :content, class: "form-control"%>
+    <p><%= f.submit 'Create Response', :class => "btn btn-primary" %></p>
+    </div>
 <% end %>

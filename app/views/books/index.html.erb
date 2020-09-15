@@ -3,5 +3,6 @@
 
 <% @books.each do |book| %>
     <h3><%= book.title %></h3>
-    <h6>By <em><%= link_to book.author, book_path(book) %></h6>
+    <p>By <em><%= link_to book.author, book_path(book) %></p><br><br>
 <% end %>
+

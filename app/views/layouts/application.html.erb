@@ -4,23 +4,29 @@
     <title>LiteraryEssaysRails</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <% if logged_in? %>
-  <%= link_to "Home", user_path(session[:user_id]), :class => "navbutton" %>
-  <%= link_to "Write a new Essay", new_essay_path, :class => "navbutton" %>
-  <%= link_to "Recent Essays", recent_path, :class => "navbutton" %>
-  <%= link_to "All Essays", essays_path, :class => "navbutton" %>
-  <%= link_to "All Responses", responses_path, :class => "navbutton" %>
-  <%= link_to "All Books", books_path, :class => "navbutton" %>
-  <%= link_to "Logout", logout_path, method: :delete, :class => "navbutton" %>
+      <ul class="nav">
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "Home", user_path(session[:user_id])%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "Write a new Essay", new_essay_path%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "Recent Essays", recent_path%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "All Essays", essays_path%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "All Responses", responses_path%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "All Books", books_path%></li>
+        <li class="nav-item mx-auto btn btn-light"><%= link_to "Logout", logout_path, method: :delete%></li>
+      </ul>
   <% end %>
 
 
   <body>
+
+  <div class="container">
     <%= yield %>
+  </div>
+    
   </body>
 </html>

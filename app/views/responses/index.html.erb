@@ -1,7 +1,10 @@
-<h1>All Responses</h1>
+<h1 class="mt-3 mb-3">All Responses</h1>
+
     <% @responses.each do |response| %>
+        <div class="card"
         <p>Responding to: <%= link_to response.essay.title, essay_path(response.essay) %></p>
-        <p><%= response.user.name %> wrote:</p>
-        <p><%= response.content %></p>
+        <p class="card-subtitle"><%= response.user.name %> wrote:</p>
+        <h3 class="card-text mt-3 mb-3"><%= response.content %></h3>
         <p><%= link_to "Response Show Page", response_path(response) %><p>
+        </div>
     <% end %>

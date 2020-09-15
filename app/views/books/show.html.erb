@@ -1,7 +1,7 @@
-<h1>Essays Concerning <%= @book.author %>:</h1>
+<h1 class="mt-3 mb-5">Essays Concerning <%= @book.author %>:</h1>
 
 <% @book.essays.each do |essay| %>
     <h3><%= link_to essay.title, essay_path(essay) %></h3>
     <p><em><%= essay.content %></p>
-    <h6>By:<%= essay.user.name %></h6>
+    <h6 class="mb-5">By: <%= essay.user.name %></h6><br><br>
 <% end %>
